@@ -251,6 +251,11 @@ If you find WAFFLE useful and want to support development:
 3DMmRsSRy2Tw81LP2WAGXxRUePaFU2hQR4
 ```
 
+**Monero (XMR):**
+```
+84ijCGp7kTtQSVqcVVwrjrM7cWuTvW4LhfpH4NFLur6PCS6m7bEgHHwQistwSQH5k2iWjEhBMD8tAC5vvqWKJwsdQv9Gddg
+```
+
 ## License
 
 MIT — see [LICENSE](LICENSE) file. Use freely in any project (commercial or otherwise), but please include the copyright notice.
