@@ -248,7 +248,7 @@ If you find WAFFLE useful and want to support development:
 
 **Bitcoin (BTC):**
 ```
-YOUR_BTC_ADDRESS_HERE
+3DMmRsSRy2Tw81LP2WAGXxRUePaFU2hQR4
 ```
 
 ## License
