@@ -11,6 +11,7 @@ Modular structure:
 import subprocess
 import sys
 import time
+import os
 
 # Import utilities
 from utils import normalize_target_url, extract_hostname, apply_directory_encoding, split_request_into_chunks
@@ -397,6 +398,22 @@ def main() -> int:
 
 
 if __name__ == "__main__":
+    # Check for --help flag
+    if "--help" in sys.argv or "-h" in sys.argv:
+        try:
+            # Get the directory where waffle.py is located
+            script_dir = os.path.dirname(os.path.abspath(__file__))
+            readme_path = os.path.join(script_dir, "README.md")
+            
+            with open(readme_path, "r") as f:
+                print(f.read())
+            sys.exit(0)
+        except FileNotFoundError:
+            print("Error: README.md not found.")
+            print("\nUsage: python3 waffle.py")
+            print("Interactive WAF bypass testing tool.")
+            sys.exit(1)
+    
     try:
         sys.exit(main())
     except KeyboardInterrupt:

@@ -34,6 +34,12 @@ Or:
 ./waffle.py
 ```
 
+To see full documentation:
+
+```bash
+python3 waffle.py --help
+```
+
 ## Quick Flow
 
 1. Enter base URL (example: `https://example.com`)
