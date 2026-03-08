@@ -262,11 +262,16 @@ def main() -> int:
                         elif request_type == "wget":
                             if wget_mode == "simple":
                                 # Simple wget with no-check-certificate and spider
-                                wget_cmd = f"wget --no-check-certificate --spider {target_url} 2>&1 | head -5"
+                                wget_cmd = "wget --no-check-certificate --spider"
+                                if user_agent:
+                                    wget_cmd += f" -U \"{user_agent}\""
+                                wget_cmd += f" {target_url} 2>&1 | head -5"
                                 command = [["bash", "-c", wget_cmd]]
                             else:  # headers
                                 # wget with headers
                                 wget_cmd_parts = ["wget", "--no-check-certificate", "--spider"]
+                                if user_agent:
+                                    wget_cmd_parts.append(f"-U \"{user_agent}\"")
                                 for header_name, header_value in wget_headers:
                                     wget_cmd_parts.append(f'--header="{header_name}: {header_value}"')
                                 wget_cmd_parts.append(target_url)
@@ -340,10 +345,12 @@ def main() -> int:
                                 print(f"openssl s_client -connect {hostname}:443 -servername {hostname} -cipher '{cipher}'{verbose_flag} <<< \"GET /{final_directory} HTTP/1.1\\nHost: {hostname}\\n{ua_line}\\n\"")
                         elif request_type == "wget":
                             if wget_mode == "simple":
-                                print(f"wget --no-check-certificate --spider {target_url} 2>&1 | head -5")
+                                ua_flag = f" -U \"{user_agent}\"" if user_agent else ""
+                                print(f"wget --no-check-certificate --spider{ua_flag} {target_url} 2>&1 | head -5")
                             else:  # headers
+                                ua_flag = f" -U \"{user_agent}\"" if user_agent else ""
                                 header_flags = " ".join([f'--header="{h[0]}: {h[1]}"' for h in wget_headers])
-                                print(f"wget --no-check-certificate --spider {header_flags} {target_url} 2>&1")
+                                print(f"wget --no-check-certificate --spider{ua_flag} {header_flags} {target_url} 2>&1")
                         else:
                             if isinstance(command[0], list):
                                 print(" ".join(command[0]))
