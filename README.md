@@ -242,6 +242,15 @@ waffle/
 |- commands/
 ```
 
+## Support
+
+If you find WAFFLE useful and want to support development:
+
+**Bitcoin (BTC):**
+```
+YOUR_BTC_ADDRESS_HERE
+```
+
 ## License
 
 MIT — see [LICENSE](LICENSE) file. Use freely in any project (commercial or otherwise), but please include the copyright notice.
