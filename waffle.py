@@ -235,7 +235,7 @@ def main() -> int:
                                 if http_mode:
                                     curl_cmd.append(http_mode)
                                 if user_agent:
-                                    curl_cmd.extend(["-A", user_agent])
+                                    curl_cmd.extend(["--user-agent", user_agent])
                                 if verbose:
                                     curl_cmd.append("-v")
                                 curl_cmd.append(target_url)
@@ -254,7 +254,7 @@ def main() -> int:
                                 curl_cmd.extend(["-H", f"{header_name}: {header_value}"])
                             curl_cmd.append("-I")
                             if user_agent:
-                                curl_cmd.extend(["-A", user_agent])
+                                curl_cmd.extend(["--user-agent", user_agent])
                             if verbose:
                                 curl_cmd.append("-v")
                             curl_cmd.append(target_url)
@@ -283,7 +283,7 @@ def main() -> int:
                                 curl_cmd.append(http_mode)
                             curl_cmd.extend(["-X", webdav_method])
                             if user_agent:
-                                curl_cmd.extend(["-A", user_agent])
+                                curl_cmd.extend(["--user-agent", user_agent])
                             if verbose:
                                 curl_cmd.append("-v")
                             curl_cmd.append(target_url)
@@ -294,7 +294,7 @@ def main() -> int:
                                 curl_cmd.append(http_mode)
                             curl_cmd.append("-I")
                             if user_agent:
-                                curl_cmd.extend(["-A", user_agent])
+                                curl_cmd.extend(["--user-agent", user_agent])
                             if verbose:
                                 curl_cmd.append("-v")
                             curl_cmd.append(target_url)
@@ -336,7 +336,7 @@ def main() -> int:
                             cipher = "ECDHE-RSA-AES128-GCM-SHA256"
                             if tls_tool == "curl":
                                 http_flag = f" {http_mode}" if http_mode else ""
-                                ua_flag = f" -A \"{user_agent}\"" if user_agent else ""
+                                ua_flag = f" --user-agent \"{user_agent}\"" if user_agent else ""
                                 verbose_flag = " -v" if verbose else ""
                                 print(f"curl --tls-max 1.2 --ciphers '{cipher}'{http_flag}{ua_flag}{verbose_flag} {target_url}")
                             else:  # openssl
